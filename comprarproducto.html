@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CG</title>
+  <link rel="icon" href="Image/logoCGC.png">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="logoCGC.png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+</head>
+
+<body>
+  <!---------------------------Encabezazo-------------------------------->
+  <nav class="navbar navbar-expand-lg bg-body-tertiary" id="menu">
+    <div class="container-fluid">
+      <a>
+        <img src="Image/logoCGC.png" alt="logoCGC" width="60" height="60" class="d-inline-block align-top">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="Index.html" id="inicio1">Inicio</a>
+          </li>
+          <li class="nav-item" id="keycap" >
+            <a class="nav-link" href="Index.html" >Keycaps</a>
+          </li>
+          <li class="nav-item" id="teclado">
+            <a class="nav-link" href="Index.html" >Teclados</a>
+          </li>
+          <li class="nav-item" id="mousepad">
+            <a class="nav-link" href="Index.html" >Mouse pads</a>
+          </li>
+        </ul>
+        <!-- Carrito -->
+        <li class="nav-item" class="carroproducto">
+          <a class="nav-link" href="carrito.html" id="carrito">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAWZJREFUSEvN1D9IVmEUx/HPS7o02BBo6BCC0ODYoG4NNboIQkMgSNkipIg46iiiSDQFhqCD0tLiZuAW2eDUpKOBirgICi4qT9wLL9f73vvo2yud9RzO9/zOv4oGW6XB+d0r4CpRc4Yv+PAv1FUrSAFp3lf4Xi8kr0VTmMUG+msA0mJKW5wX8BiHeICn2M+B1AUI+VbxBnMIirJWN6APP3CCDlzgkppbF3xB8Q0r6uFvdGMIK5GATxjFR4wFWhFgBJ/xCz2Z0vJa1IxjPMIz7JYBHuIALXiOnSpIHuA11rCN3jS2bM1SycsYLgFs4iXeYSkW0IW9ZMitOK1xF+34g3O0IXyDv1amIMRs4QUmMV8DMIPp5MW8rY6JAQzia+TLCOv987aApmQjOksg3zCQjYlREFl8flgsYBwTWMBiJlWRL2rIIV94fmE7jvAkAyjyRQPCRYdDWsf7DKDIFw248xxiZ/D/Aq4BjHtCGTrJmqQAAAAASUVORK5CYII="/>
+          </a>
+        </li>
+        <!-- Fin carrito -->
+        <!-- <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-secondary-outline-success" type="button">Buscar</button>
+        </form> -->
+      </div>
+    </div>
+  </nav>
+  <title>Compra del Producto</title>
+  <script type="text/javascript" src="JS/jspdf.min.js"></script>
+</head>
+<body>
+
+<h1>Compra del Producto</h1>
+
+<div class="formulario-compra">
+  <form onsubmit="return confirmarCompra()">
+    <div id="completar-campos">
+      <p>Completa los siguientes campos para confirmar la orden.</p>
+      <p>Y poder generar tu factura</p>
+    </div>
+
+    <label for="email">Correo Electrónico:</label>
+    <input type="email" id="email" name="email" required><br>
+
+    <label for="tarjeta">Número de Tarjeta:</label>
+    <input type="text" id="tarjeta" name="tarjeta" required><br>
+
+    <label for="cvv">CVV:</label>
+    <input type="text" id="cvv" name="cvv" required><br>
+
+    <label for="postal">Codigo postal:</label>
+    <input type="text" id="postal" name="postal" required><br>
+
+    <label for="direccion">Dirección de Envío:</label>
+    <input type="text" id="direccion" name="direccion" required><br>
+
+    <label for="tel">No. de telefono</label>
+    <input type="tel" id="tel" name="tel" required><br>
+
+    <label for="comentarios">Comentarios extras:</label>
+    <input type="text" id="comentario" name="comentario"><br>
+
+    <div id="barra-formulario">
+      <p>Confirmar orden de compra</p>
+    </div>
+    <br>
+    <button type="submit">Confirmar Compra</button>
+  </form>
+
+  <!-- Contenedor para el botón "Crear PDF" -->
+  <div id="crear-pdf-container" style="display: none;">
+    <a href="javascript:genPDF()">Crear PDF</a>
+  </div>
+
+  <!-- Contenedor para mostrar el total -->
+  <!-- <div id="total-container"></div> -->
+</div>
+
+
+<script>
+  function confirmarCompra() {
+    document.getElementById('crear-pdf-container').style.display = 'block';
+
+    return false; 
+  }
+</script>
+
+<!-- Script para generar el PDF -->
+<script>
+  function genPDF() {
+    var doc = new jsPDF();
+
+    // Agrega el título 'CG' centrado en la parte superior
+    doc.setFont("Times New Roman");
+    doc.setFontSize(20);
+    doc.setTextColor(0, 0, 0);
+    doc.text('CG', doc.internal.pageSize.width / 2, 15, 'center');
+
+    // Crea una lista de productos centrada
+    let carrito = JSON.parse(localStorage.getItem('carrito')) || '';
+    let mensaje = '';
+    carrito.forEach(function(producto, index) {
+      mensaje += `Producto: ${producto.nombre}\nPrecio: Q.${producto.precio.toFixed(2)}\n\n`;
+    });
+
+    doc.setFontSize(14);
+    doc.text(mensaje, doc.internal.pageSize.width / 2, 30, 'center');
+
+    // Muestra la información del formulario de compra justo debajo de los productos
+    let infoCompra = obtenerInfoFormulario();
+    doc.text(infoCompra, doc.internal.pageSize.width / 2, 90, 'center');
+    // doc.internal.pageSize.height - 20
+    // Guarda el documento y abre una nueva página
+    doc.addPage();
+    doc.save('ComprobanteCG.pdf');
+
+    window.location.href = 'index.html';
+  }
+
+  function obtenerInfoFormulario() {
+    let email = document.getElementById('email').value;
+    let tarjeta = document.getElementById('tarjeta').value;
+    let cvv = document.getElementById('cvv').value;
+    let postal = document.getElementById('postal').value;
+    let direccion = document.getElementById('direccion').value;
+    let telefono = document.getElementById('tel').value
+    let comentario = document.getElementById('comentario').value;
+
+    let infoCompra = `
+      Correo Electrónico: ${email}
+      Codigo postal: ${postal}
+      Dirección de Envío: ${direccion}
+      No. de telefono: ${telefono}
+    `;
+
+    return infoCompra;
+  }
+</script>
+
+<!-- Recuperar el total de localStorage y mostrarlo -->
+<script>
+  let total = localStorage.getItem('total');
+  document.getElementById('total-container').textContent = `Total: Q.${total}`;
+</script>
+
+</body>
+</html>
