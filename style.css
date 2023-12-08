@@ -394,3 +394,18 @@ li {
     width: 100%;
   }
 }
+@media screen and (max-width: 600px) {
+  #carrito-container {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+
+  #titulo-carrito {
+    padding-left: 5px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .formulario-compra {
+    width: 90%; /* Ajustar según tus necesidades para pantallas pequeñas */
+  }
+}
